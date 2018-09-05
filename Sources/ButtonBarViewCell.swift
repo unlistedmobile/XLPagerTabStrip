@@ -29,14 +29,16 @@ open class ButtonBarViewCell: UICollectionViewCell {
     @IBOutlet open var imageView: UIImageView!
     @IBOutlet open var label: UILabel!
 
+    var didSetSelected: (() -> Void)?
+
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
+
         isAccessibilityElement = true
         accessibilityTraits |= UIAccessibilityTraitButton
         accessibilityTraits |= UIAccessibilityTraitHeader
     }
-    
+
     open override var isSelected: Bool {
         get {
             return super.isSelected
@@ -48,6 +50,7 @@ open class ButtonBarViewCell: UICollectionViewCell {
             } else {
                 accessibilityTraits &= ~UIAccessibilityTraitSelected
             }
+            didSetSelected?()
         }
     }
 }
