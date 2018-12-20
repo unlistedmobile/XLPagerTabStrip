@@ -336,7 +336,6 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
         let indicatorInfo = childController.indicatorInfo(for: self)
 
         cell.label.text = indicatorInfo.title
-        cell.accessibilityLabel = indicatorInfo.accessibilityLabel
 
         func setupSubviewsForSelectedState() {
             let font = cell.isSelected ? settings.style.selectedButtonBarItemFont : settings.style.buttonBarItemFont
@@ -349,6 +348,7 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
         }
 
         setupSubviewsForSelectedState()
+
         if let image = indicatorInfo.image {
             cell.imageView.image = image
         }
